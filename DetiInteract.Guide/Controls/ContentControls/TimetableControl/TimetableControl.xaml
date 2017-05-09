@@ -1,0 +1,280 @@
+﻿<UserControl x:Class="DetiInteract.Guide.Controls.TimetableControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d">
+	<UserControl.Resources>
+		<!--Transition animations-->
+		<Storyboard x:Key="_animateLeft">
+			<ThicknessAnimation BeginTime="00:00:00"
+								Storyboard.TargetName="grTimeTable"
+								Storyboard.TargetProperty="Margin"
+								From="0,0,0,0" To="-300,0,300,0"
+								Duration="0:0:0.25">
+			</ThicknessAnimation>
+			<DoubleAnimation BeginTime="00:00:00"
+							 Storyboard.TargetName="grTimeTable"
+							 Storyboard.TargetProperty="Opacity"
+							 From="1" To="0"
+							 Duration="0:0:0.25">
+			</DoubleAnimation>
+			<DoubleAnimation BeginTime="00:00:00"
+							 Storyboard.TargetName="_buttonRight"
+							 Storyboard.TargetProperty="Opacity"
+							 From="0.5" To="1"
+							 Duration="0:0:0.1">
+			</DoubleAnimation>
+			<ThicknessAnimation BeginTime="00:00:0.25"
+								Storyboard.TargetName="grTimeTable"
+								Storyboard.TargetProperty="Margin"
+								From="100,0,-100,0" To="0,0,0,0"
+								Duration="0:0:0.25">
+			</ThicknessAnimation>
+			<DoubleAnimation BeginTime="00:00:0.25"
+							 Storyboard.TargetName="grTimeTable"
+							 Storyboard.TargetProperty="Opacity"
+							 From="0" To="1"
+							 Duration="0:0:0.25">
+			</DoubleAnimation>
+			<DoubleAnimation BeginTime="00:00:0.4"
+							 Storyboard.TargetName="_buttonRight"
+							 Storyboard.TargetProperty="Opacity"
+							 From="1" To="0.5"
+							 Duration="0:0:0.1">
+			</DoubleAnimation>
+		</Storyboard>
+		<Storyboard x:Key="_animateRight">
+			<ThicknessAnimation BeginTime="00:00:00"
+								Storyboard.TargetName="grTimeTable"
+								Storyboard.TargetProperty="Margin"
+								From="0,0,0,0" To="300,0,-300,0"
+								Duration="0:0:0.25">
+			</ThicknessAnimation>
+			<DoubleAnimation BeginTime="00:00:00"
+							 Storyboard.TargetName="grTimeTable"
+							 Storyboard.TargetProperty="Opacity"
+							 From="1" To="0"
+							 Duration="0:0:0.25">
+			</DoubleAnimation>
+			<DoubleAnimation BeginTime="00:00:00"
+							 Storyboard.TargetName="_buttonLeft"
+							 Storyboard.TargetProperty="Opacity"
+							 From="0.5" To="1"
+							 Duration="0:0:0.1">
+			</DoubleAnimation>
+			<ThicknessAnimation BeginTime="00:00:0.25"
+								Storyboard.TargetName="grTimeTable"
+								Storyboard.TargetProperty="Margin"
+								From="-100,0,100,0" To="0,0,0,0"
+								Duration="0:0:0.25">
+			</ThicknessAnimation>
+			<DoubleAnimation BeginTime="00:00:0.25"
+							 Storyboard.TargetName="grTimeTable"
+							 Storyboard.TargetProperty="Opacity"
+							 From="0" To="1"
+							 Duration="0:0:0.25">
+			</DoubleAnimation>
+			<DoubleAnimation BeginTime="00:00:0.4"
+							 Storyboard.TargetName="_buttonLeft"
+							 Storyboard.TargetProperty="Opacity"
+							 From="1" To="0.5"
+							 Duration="0:0:0.1">
+			</DoubleAnimation>
+		</Storyboard>
+		<Storyboard x:Key="_animateUp">
+			<ThicknessAnimation BeginTime="00:00:00"
+								Storyboard.TargetName="grTimeTable"
+								Storyboard.TargetProperty="Margin"
+								From="0,0,0,0" To="0,-300,0,300"
+								Duration="0:0:0.25">
+			</ThicknessAnimation>
+			<DoubleAnimation BeginTime="00:00:00"
+							 Storyboard.TargetName="grTimeTable"
+							 Storyboard.TargetProperty="Opacity"
+							 From="1" To="0"
+							 Duration="0:0:0.25">
+			</DoubleAnimation>
+			<DoubleAnimation BeginTime="00:00:00"
+							 Storyboard.TargetName="_buttonDown"
+							 Storyboard.TargetProperty="Opacity"
+							 From="0.5" To="1"
+							 Duration="0:0:0.1">
+			</DoubleAnimation>
+			<ThicknessAnimation BeginTime="00:00:0.25"
+								Storyboard.TargetName="grTimeTable"
+								Storyboard.TargetProperty="Margin"
+								From="0,100,0,-100" To="0,0,0,0"
+								Duration="0:0:0.25">
+			</ThicknessAnimation>
+			<DoubleAnimation BeginTime="00:00:0.25"
+							 Storyboard.TargetName="grTimeTable"
+							 Storyboard.TargetProperty="Opacity"
+							 From="0" To="1"
+							 Duration="0:0:0.25">
+			</DoubleAnimation>
+			<DoubleAnimation BeginTime="00:00:0.4"
+							 Storyboard.TargetName="_buttonDown"
+							 Storyboard.TargetProperty="Opacity"
+							 From="1" To="0.5"
+							 Duration="0:0:0.1">
+			</DoubleAnimation>
+		</Storyboard>
+		<Storyboard x:Key="_animateDown">
+			<ThicknessAnimation BeginTime="00:00:00"
+								Storyboard.TargetName="grTimeTable"
+								Storyboard.TargetProperty="Margin"
+								From="0,0,0,0" To="0,300,0,-300"
+								Duration="0:0:0.25">
+			</ThicknessAnimation>
+			<DoubleAnimation BeginTime="00:00:00"
+							 Storyboard.TargetName="grTimeTable"
+							 Storyboard.TargetProperty="Opacity"
+							 From="1" To="0"
+							 Duration="0:0:0.25">
+			</DoubleAnimation>
+			<DoubleAnimation BeginTime="00:00:00"
+							 Storyboard.TargetName="_buttonUp"
+							 Storyboard.TargetProperty="Opacity"
+							 From="0.5" To="1"
+							 Duration="0:0:0.1">
+			</DoubleAnimation>
+			<ThicknessAnimation BeginTime="00:00:0.25"
+								Storyboard.TargetName="grTimeTable"
+								Storyboard.TargetProperty="Margin"
+								From="0,-100,0,100" To="0,0,0,0"
+								Duration="0:0:0.25">
+			</ThicknessAnimation>
+			<DoubleAnimation BeginTime="00:00:0.25"
+							 Storyboard.TargetName="grTimeTable"
+							 Storyboard.TargetProperty="Opacity"
+							 From="0" To="1"
+							 Duration="0:0:0.25">
+			</DoubleAnimation>
+			<DoubleAnimation BeginTime="00:00:0.4"
+							 Storyboard.TargetName="_buttonUp"
+							 Storyboard.TargetProperty="Opacity"
+							 From="1" To="0.5"
+							 Duration="0:0:0.1">
+			</DoubleAnimation>
+		</Storyboard>
+	</UserControl.Resources>
+	
+	<!-- Main grid, hosts the buttons and the timetable-->
+	<Grid Name="_mainGrid">
+
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="Auto"/>
+			<ColumnDefinition Width="*"/>
+			<ColumnDefinition Width="Auto"/>
+		</Grid.ColumnDefinitions>
+		<TextBlock FontSize="160"
+				   Foreground="LightGray"
+				   Margin="0,-20,0,0" 
+				   FontFamily="Fonts/SegoeWP.ttf#Segoe WP" 
+				   Grid.Column="0"
+				   Grid.Row="0"
+				   Grid.ColumnSpan="4"
+				   Grid.RowSpan="4">horários</TextBlock>
+		<Button x:Name="_buttonUp"
+				Opacity="0.5"
+				Click="TimeTable_Up" 
+				Grid.Column="1" 
+				Grid.Row="0" 
+				Grid.ColumnSpan="1">
+			<Image Source="/Resources/up.png" 
+				   Height="100"/>
+		</Button>
+		<Button x:Name="_buttonDown"
+				Opacity="0.5"
+				Click="TimeTable_Down" 
+				Grid.Column="1" 
+				Grid.Row="2" 
+				Grid.ColumnSpan="1">
+			<Image Source="/Resources/down.png" 
+				   Height="100"/>
+		</Button>
+		<Button x:Name="_buttonLeft"
+				Opacity="0.5"
+				Click="TimeTable_Left"
+				Grid.Column="0"
+				Grid.Row="0" 
+				Grid.RowSpan="3">
+			<Image Source="/Resources/left.png" 
+				   Width="100"/>
+		</Button>
+		<Button x:Name="_buttonRight"
+				Opacity="0.5"
+				Click="TimeTable_Right" 
+				Grid.Column="2"
+				Grid.Row="0" 
+				Grid.RowSpan="3">
+			<Image Source="/Resources/right.png" 
+				   Width="100"/>
+		</Button>
+		<!--Grid that hosts the timetable-->
+		<Grid x:Name="grTimeTable" 
+			  HorizontalAlignment="Stretch"
+			  Grid.Column="1"
+			  Grid.Row="1">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="Auto"/>
+			</Grid.RowDefinitions>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+			</Grid.ColumnDefinitions>
+		</Grid>
+		<StackPanel VerticalAlignment="Bottom"
+					HorizontalAlignment="Center"
+					Margin="25, 0, 25, 1"
+					Orientation="Horizontal"
+					Grid.Row="4"
+					Grid.Column="0"
+					Grid.ColumnSpan="3">
+			<TextBlock Padding="0,10, 60, 0" Foreground="Gray">Gestos <LineBreak/> Permitidos</TextBlock>
+			<Image Source="/Resources/fling.png" Height="50"></Image>
+			<TextBlock Padding="0,10, 60, 0" Foreground="Gray">Fling para alterar o <LineBreak/> ano ou o curso</TextBlock>
+		</StackPanel>
+	</Grid>
+</UserControl>

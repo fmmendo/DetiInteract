@@ -1,0 +1,143 @@
+﻿using System.Collections.Generic;
+using System.ComponentModel;
+using DetiInteract.DSDBroker.DSDWS;
+
+namespace DetiInteract.DSDBroker.Parsers
+{
+    public sealed class TeacherParser : IParser
+    {
+        #region Fields
+
+        /// <summary>
+        /// Changed event 
+		/// </summary>
+        public event ProgressChangedEventHandler Changed;
+
+        /// <summary>
+        /// Background worker to deal with the data on a separate thread .
+		/// </summary>
+        private BackgroundWorker Worker;
+        
+        #endregion
+
+		/// <summary>
+		/// Constructor
+		/// </summary>
+        public TeacherParser()
+        {
+            Worker = null;
+        }
+
+        #region IParser Methods
+
+        /// <summary>
+        /// Activates the Changed event
+        /// </summary>
+        /// <param name="e">ProgressChangedEventArgs</param>
+        public void SetChanged(ProgressChangedEventArgs e)
+        {
+            if (Changed != null) Changed(this, e);
+        }
+
+		/// <summary>
+		/// Configures the worker and begins work.
+		/// </summary>
+        public void Start()
+        {
+            ConfigWorker();
+
+            Worker.RunWorkerAsync();
+        }
+
+		/// <summary>
+		/// Pauses the worker. Unused.
+		/// </summary>
+        public void Pause()
+        {
+            return;
+        }
+
+		/// <summary>
+		/// Stops the worker. Unused
+		/// </summary>
+        public void Stop()
+        {
+            return;
+        }
+        #endregion
+
+        #region BackgroundWorker Events
+
+		/// <summary>
+		/// Configures the Worker.
+		/// </summary>
+		private void ConfigWorker()
+		{
+			Worker = new BackgroundWorker();
+			Worker.WorkerReportsProgress = true;
+			Worker.DoWork += new DoWorkEventHandler(Worker_DoWork);
+			Worker.ProgressChanged += new ProgressChangedEventHandler(Worker_ProgressChanged);
+			Worker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(Worker_RunWorkerCompleted);
+		}
+
+		/// <summary>
+		/// Starts working on the data.
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+        private void Worker_DoWork(object sender, DoWorkEventArgs e)
+        {
+			// 'Unsing' ensures DSD is destroyd in the end.
+            using (DSDContentProvider DSD = new DSDContentProvider())
+            {
+                // Get the teacher list from DSD Content Provider
+                List<Docente> docentes = DSD.GetDocentes(DSD.IDDept);
+
+                if (docentes != null)
+                {
+                    // Send data related to one teacher
+                    foreach (Docente d in docentes)
+                    {
+                        Worker.ReportProgress(1, d);
+                    }
+                }
+            }
+        }
+
+		/// <summary>
+		/// Handles a ProgressChanged evend. Extracts a TeacherItem and sends 
+		/// it to the Presentation layer.
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+        private void Worker_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            if (e.ProgressPercentage != 100)
+            {
+                // Extreact the passed arg.
+                Docente d = (Docente)e.UserState;
+
+				// create a TeacherItem instance.
+                TeacherItem ti = new TeacherItem(d.Pessoa.Nome, DSDContentProvider.DSDFilePath+d.Foto, d.Gabinete, d.Extensao, d.Webpage);
+
+				// Fire the Changed event and send the TeacherItem to its handler.
+                SetChanged(new ProgressChangedEventArgs(1, ti));
+            }
+        }
+
+		/// <summary>
+		/// Disposes of the worker.
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+        private void Worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (e.Error != null)
+            {
+                Worker.Dispose();
+            }
+        }
+
+        #endregion
+    }
+}

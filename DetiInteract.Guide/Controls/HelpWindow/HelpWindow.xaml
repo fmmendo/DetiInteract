@@ -1,0 +1,36 @@
+﻿<Window x:Class="DetiInteract.Guide.Controls.HelpWindow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="1300" d:DesignWidth="1300" Background="#00000000" WindowStyle="None" AllowsTransparency="True" WindowState="Maximized">
+	<Grid Margin="600,100,600,100">
+		<ListBox ItemsSource="{Binding ItemList}"
+				 Width="{Binding Width, RelativeSource={RelativeSource AncestorType={x:Type Grid}}}" 
+				 Height="{Binding Width, RelativeSource={RelativeSource AncestorType={x:Type Grid}}}" 
+				 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+				 Background="Gainsboro">
+			<ListBox.ItemsPanel>
+				<ItemsPanelTemplate>
+					<StackPanel Margin="10, 75, 10, 10" Orientation="Vertical" />
+				</ItemsPanelTemplate>
+			</ListBox.ItemsPanel>
+			<ListBox.Effect>
+				<DropShadowEffect ShadowDepth="1" 
+								  BlurRadius="100"/>
+			</ListBox.Effect>
+		</ListBox>
+		<Border Margin="10"
+				BorderBrush="Black"
+				BorderThickness="2"
+				VerticalAlignment="Top"
+				HorizontalAlignment="Stretch">
+		<TextBlock FontFamily="../../Fonts/SegoeWP.ttf#Segoe WP"
+				   FontSize="26"
+				   Padding="5">
+			DETI Interact - Ajuda
+		</TextBlock>
+		</Border>
+	</Grid>
+</Window>

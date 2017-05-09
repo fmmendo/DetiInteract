@@ -1,0 +1,410 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{BD44EA6B-148D-4830-8D2B-250816F4FFCD}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DetiInteract.Guide</RootNamespace>
+    <AssemblyName>DetiInteract.Guide</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <Utf8Output>true</Utf8Output>
+    <ExpressionBlendVersion>4.0.20525.0</ExpressionBlendVersion>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <PublishUrl>C:\Users\Filipe\Desktop\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ProductName>Deti Guide</ProductName>
+    <PublisherName>Deti</PublisherName>
+    <SuiteName>Deti Interact</SuiteName>
+    <ApplicationRevision>16</ApplicationRevision>
+    <ApplicationVersion>0.3.2.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>8590AD72E6015E18C72F0988C0B7343AA0DBA782</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>DetiInteract_Key.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>DetiInteractKey.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Expression.Drawing" />
+    <Reference Include="Microsoft.mshtml, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Xna.Framework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86" />
+    <Reference Include="Microsoft.Xna.Framework.Game, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86" />
+    <Reference Include="Microsoft.Xna.Framework.Graphics, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="DataVirtualization\AsyncVirtualizingCollection.cs" />
+    <Compile Include="Controls\ContentControls\HelpControl\HelpView.xaml.cs">
+      <DependentUpon>HelpView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ContentControls\TimetableControl\TimetablePanel\TimetablePanel.xaml.cs">
+      <DependentUpon>TimetablePanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ContentControls\Viewer3DControl\Viewer3DViewModel.cs" />
+    <Compile Include="Controls\ContentControls\Viewer3DControl\ViewerPanel\Viewer3DPanel.xaml.cs">
+      <DependentUpon>Viewer3DPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ContentControls\Viewer3DControl\Viewer3DView.xaml.cs">
+      <DependentUpon>Viewer3DView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\DetiControl\DetiControlView.xaml.cs">
+      <DependentUpon>DetiControlView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\DetiControl\DetiControlViewModel.cs" />
+    <Compile Include="Controls\ContentControls\IDetiInteractControl.cs" />
+    <Compile Include="Controls\ContentControls\MapControl\GoogleMapsControl.xaml.cs">
+      <DependentUpon>GoogleMapsControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\DETIVirtualizingWrapPanel.cs" />
+    <Compile Include="Controls\MarqueeControl\MarqueeView.xaml.cs">
+      <DependentUpon>MarqueeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\HelpWindow\HelpWindow.xaml.cs">
+      <DependentUpon>HelpWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ContentControls\TeacherControl\TeacherItemControl\TeacherItemView.xaml.cs">
+      <DependentUpon>TeacherItemView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ContentControls\TeacherControl\TeacherItemControl\TeacherItemViewModel.cs" />
+    <Compile Include="Controls\ContentControls\TeacherControl\TeacherView.xaml.cs">
+      <DependentUpon>TeacherView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ContentControls\TeacherControl\TeacherViewModel.cs" />
+    <Compile Include="Controls\ContentControls\TimetableControl\TimetableControl.xaml.cs">
+      <DependentUpon>TimetableControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\HelpWindow\ModalWindowViewModel.cs" />
+    <Compile Include="Controls\VirtualizingWrapPanel.cs" />
+    <Compile Include="DataVirtualization\IItemsProvider.cs" />
+    <Compile Include="MainView.xaml.cs">
+      <DependentUpon>MainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainViewModel.cs" />
+    <Compile Include="Service References\DSDWS\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="DataVirtualization\VirtualizingCollection.cs" />
+    <Page Include="Controls\ContentControls\HelpControl\HelpView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ContentControls\TimetableControl\TimetablePanel\TimetablePanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ContentControls\Viewer3DControl\ViewerPanel\Viewer3DPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ContentControls\Viewer3DControl\Viewer3DView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\DetiControl\DetiControlView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ContentControls\MapControl\GoogleMapsControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\MarqueeControl\MarqueeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\HelpWindow\HelpWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ContentControls\TeacherControl\_old_TeacherControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ContentControls\TeacherControl\TeacherItemControl\TeacherItemView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ContentControls\TeacherControl\TeacherView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ContentControls\TimetableControl\TimetableControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controls\ContentControls\TeacherControl\_old_TeacherControl.xaml.cs">
+      <DependentUpon>_old_TeacherControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Resources\Styles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <Resource Include="Fonts\SegoeWP.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <None Include="DetiInteractKey.pfx" />
+    <None Include="DetiInteract_Key.pfx" />
+    <None Include="Properties\DataSources\DetiInteract.Core.DSDWS.Area.datasource" />
+    <None Include="Properties\DataSources\DetiInteract.Core.DSDWS.Aula.datasource" />
+    <None Include="Properties\DataSources\DetiInteract.Core.DSDWS.Curso.datasource" />
+    <None Include="Properties\DataSources\DetiInteract.Core.DSDWS.Departamento.datasource" />
+    <None Include="Properties\DataSources\DetiInteract.Core.DSDWS.Disciplina.datasource" />
+    <None Include="Properties\DataSources\DetiInteract.Core.DSDWS.DisciplinaAno.datasource" />
+    <None Include="Properties\DataSources\DetiInteract.Core.DSDWS.Docente.datasource" />
+    <None Include="Properties\DataSources\DetiInteract.Core.DSDWS.DocenteAno.datasource" />
+    <None Include="Properties\DataSources\DetiInteract.Core.DSDWS.Sala.datasource" />
+    <None Include="Properties\DataSources\DetiInteract.Core.DSDWS.Semestre.datasource" />
+    <None Include="Properties\DataSources\DetiInteract.Core.DSDWS.SubArea.datasource" />
+    <None Include="Properties\DataSources\DetiInteract.Core.DSDWS.TipoSala.datasource" />
+    <None Include="Properties\DataSources\DetiInteract.Core.DSDWS.Turma.datasource" />
+    <None Include="Properties\DataSources\DetiInteract.Core.DSDWS.TurmaHora.datasource" />
+    <None Include="Properties\DataSources\DetiInteract.Core.DSDWS.WishList.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+    <None Include="Resources\teapot.xnb" />
+    <None Include="Service References\DSDWS\WS.wsdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DetiInteract.Control\DetiInteract.Control.csproj">
+      <Project>{1DC4807D-2715-438A-9300-0950478BC74A}</Project>
+      <Name>DetiInteract.Control</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DetiInteract.Core\DetiInteract.DSDProvider.csproj">
+      <Project>{C0EC7AD5-83F2-4430-9EAB-DFD9DC592BB7}</Project>
+      <Name>DetiInteract.DSDProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DetiInteract.Logger\DetiInteract.Logger.csproj">
+      <Project>{5539846C-D1D0-4694-8FE0-F906D44AC7E0}</Project>
+      <Name>DetiInteract.Logger</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DetiInteract.ModelViewer\DetiInteract.ModelViewerLib\DetiInteract.ModelViewerLib.csproj">
+      <Project>{82419BF3-1366-4AC5-ACB4-570D2068F65E}</Project>
+      <Name>DetiInteract.ModelViewerLib</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\DSDWS\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\DSDWS\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\DSDWS\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\DSDWS\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 Client Profile %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Xna.Framework.4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft XNA Framework Redistributable 4.0</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\pinch.png" />
+    <Resource Include="Resources\tap.png" />
+    <Resource Include="Resources\bigship.png" />
+    <Resource Include="Resources\teapot.png" />
+    <Resource Include="Resources\down.png" />
+    <Resource Include="Resources\left.png" />
+    <Resource Include="Resources\right.png" />
+    <Resource Include="Resources\up.png" />
+    <Resource Include="Resources\fling.png" />
+    <Resource Include="Resources\press.png" />
+    <Resource Include="Resources\scroll.png" />
+    <Resource Include="Resources\tilt.png" />
+    <Resource Include="Controls\ContentControls\MapControl\earth.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Content Include="Controls\ContentControls\MapControl\map.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <PublishFile Include="Controls\ContentControls\MapControl\earth.html">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>DataFile</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="Controls\ContentControls\MapControl\map.html">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>DataFile</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="SHDocVw">
+      <Guid>{EAB22AC0-30C1-11CF-A7EB-0000C05BAE0B}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>1</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

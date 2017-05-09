@@ -1,0 +1,244 @@
+﻿using System;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Interop;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using System.Windows.Media;
+using System.Reflection;
+using System.Runtime.InteropServices;
+
+namespace DetiInteract.Guide.Controls.ContentControls.Viewer3DControl
+{
+	/// <summary>
+	/// Interaction logic for Viewer3DPanel.xaml
+	/// </summary>
+	public partial class Viewer3DPanel : UserControl
+	{
+		#region Dependency Properties
+		/// <summary>
+		/// Game dependency property.
+		/// Hosts any XNA application.
+		/// </summary>
+		public Game Game
+		{
+			get { return (Game)GetValue(GameProperty); }
+			set { SetValue(GameProperty, value); }
+		}
+
+		// Using a DependencyProperty as the backing store for Game.  This enables animation, styling, binding, etc...
+		public static readonly DependencyProperty GameProperty = DependencyProperty.Register("Game", typeof(Game), typeof(Viewer3DPanel));
+
+		#endregion
+
+		/// <summary>
+		/// Constructor
+		/// </summary>
+		public Viewer3DPanel()
+		{
+			InitializeComponent();
+
+			this.Loaded += new RoutedEventHandler(Viewer3DPanel_Loaded);
+		}
+
+		#region Event Handlers
+		/// <summary>
+		/// Handles the Loaded event for the Viewer3DPanel.
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void Viewer3DPanel_Loaded(object sender, RoutedEventArgs e)
+		{
+			if (ReferenceEquals(Game, null)) return;
+
+			CreateGame(Game, _image);
+			//Set the back buffer for the D3DImage, since unlocking it without one will thrown and exception
+            SetD3DImageBackBuffer(CreateRenderTarget(1, 1));
+
+            //Register for Rendering to perform updates and drawing
+            System.Windows.Media.CompositionTarget.Rendering += new EventHandler(OnRendering);
+        }
+
+		/// <summary>
+		/// Rendering callback handler.
+		/// Calls Game.Tick() to trigger the Update() handler.
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+        private void OnRendering(object sender, EventArgs e)
+        {
+            _d3DImage.Lock();
+            //Update and draw the game, then invalidate the D3DImage
+            Game.Tick();
+            _d3DImage.AddDirtyRect(new Int32Rect(0, 0, _d3DImage.PixelWidth, _d3DImage.PixelHeight));
+            _d3DImage.Unlock();
+
+            //Window.GetWindow(this).Title = Game.Window.Title;
+        }
+		#endregion
+
+		#region Configure Rendering
+		/// <summary>
+		/// Creates a new render target for the XNA app
+		/// </summary>
+		/// <param name="width"></param>
+		/// <param name="height"></param>
+		/// <returns></returns>
+        private RenderTarget2D CreateRenderTarget(int width, int height)
+        {
+            return new RenderTarget2D(Game.GraphicsDevice, width, height, false, SurfaceFormat.Color, DepthFormat.Depth24);
+        }
+
+		/// <summary>
+		/// Sets the d3dImage as the backbuffer for XNA to draw to.
+		/// </summary>
+		/// <param name="renderTarget"></param>
+        private void SetD3DImageBackBuffer(RenderTarget2D renderTarget)
+        {
+            _d3DImage.Lock();
+            _d3DImage.SetBackBuffer(D3DResourceType.IDirect3DSurface9, GetGraphicsDeviceSurface(Game.GraphicsDevice));
+            _d3DImage.Unlock();
+        }
+		#endregion
+
+		#region XNA Reflection
+		/// <summary>
+		/// Creates a new XNA game.
+		/// </summary>
+		/// <param name="game">XNA Game to be created.</param>
+		/// <param name="visual">Visual to draw to (d3dimage)</param>
+		private void CreateGame(Game game, Visual visual)
+		{
+			var deviceManager = GetGraphicsDeviceManager(game);
+
+			deviceManager.PreparingDeviceSettings += (sender, e) =>
+			{
+				e.GraphicsDeviceInformation.PresentationParameters.BackBufferWidth = 1000;
+				e.GraphicsDeviceInformation.PresentationParameters.BackBufferHeight = 1000;
+				e.GraphicsDeviceInformation.PresentationParameters.RenderTargetUsage = RenderTargetUsage.PreserveContents;
+				e.GraphicsDeviceInformation.PresentationParameters.IsFullScreen = false;
+				e.GraphicsDeviceInformation.PresentationParameters.DeviceWindowHandle = (PresentationSource.FromVisual(visual) as HwndSource).Handle;
+			};
+
+			//Using reflection to fetch non-public methods which create the GraphicsDevice and perform other initializations
+			MethodInfo changeDevice = deviceManager.GetType().GetMethod("ChangeDevice", BindingFlags.NonPublic | BindingFlags.Instance);
+			changeDevice.Invoke(deviceManager, new object[] { true });
+
+			MethodInfo initialize = game.GetType().GetMethod("Initialize", BindingFlags.NonPublic | BindingFlags.Instance);
+			initialize.Invoke(game, new object[] { });
+		}
+
+		/// <summary>
+		/// Get the graphics device manager from the XNA game.
+		/// </summary>
+		/// <param name="game"></param>
+		/// <returns></returns>
+		private GraphicsDeviceManager GetGraphicsDeviceManager(Game game)
+		{
+			foreach (var field in game.GetType().GetFields(BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public))
+			{
+				if (field.FieldType == typeof(GraphicsDeviceManager))
+				{
+					return (GraphicsDeviceManager)field.GetValue(game);
+				}
+			}
+
+			throw new InvalidOperationException("Game contains no GraphicsDeviceManager");
+		}
+
+		/// <summary>
+		/// Use InteropServices to get the render target surface using the 
+		/// IDirect3DTexture9 interface.
+		/// </summary>
+		/// <param name="renderTarget"></param>
+		/// <returns></returns>
+		private IntPtr GetRenderTargetSurface(RenderTarget2D renderTarget)
+		{
+			IntPtr surfacePointer;
+			var texture = GetIUnknownObject<IDirect3DTexture9>(renderTarget);
+			Marshal.ThrowExceptionForHR(texture.GetSurfaceLevel(0, out surfacePointer));
+			Marshal.ReleaseComObject(texture);
+			return surfacePointer;
+		}
+
+		/// <summary>
+		/// Use InteropServices to get the graphics device surface using the 
+		/// IDirect3DDevice9 interface.
+		/// </summary>
+		/// <param name="graphicsDevice"></param>
+		/// <returns></returns>
+		private IntPtr GetGraphicsDeviceSurface(GraphicsDevice graphicsDevice)
+		{
+			IntPtr surfacePointer;
+			var device = GetIUnknownObject<IDirect3DDevice9>(graphicsDevice);
+			Marshal.ThrowExceptionForHR(device.GetBackBuffer(0, 0, 0, out surfacePointer));
+			Marshal.ReleaseComObject(device);
+			return surfacePointer;
+		}
+
+		/// <summary>
+		/// Get the COM object pointer from the D3D object and marshal it as one of the interfaces defined below 
+		/// </summary>
+		/// <typeparam name="T"></typeparam>
+		/// <param name="container"></param>
+		/// <returns></returns>
+		private T GetIUnknownObject<T>(object container)
+		{
+			unsafe
+			{
+				var deviceField = container.GetType().GetField("pComPtr", BindingFlags.NonPublic | BindingFlags.Instance);
+				var devicePointer = new IntPtr(Pointer.Unbox(deviceField.GetValue(container)));
+				return (T)Marshal.GetObjectForIUnknown(devicePointer);
+			}
+		}
+
+		/// <summary>
+		/// Import the IDirect3dTexture9 interface
+		/// </summary>
+		[ComImport, Guid("85C31227-3DE5-4f00-9B3A-F11AC38C18B5"), InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
+		private interface IDirect3DTexture9
+		{
+			void GetDevice();
+			void SetPrivateData();
+			void GetPrivateData();
+			void FreePrivateData();
+			void SetPriority();
+			void GetPriority();
+			void PreLoad();
+			void GetType();
+			void SetLOD();
+			void GetLOD();
+			void GetLevelCount();
+			void SetAutoGenFilterType();
+			void GetAutoGenFilterType();
+			void GenerateMipSubLevels();
+			void GetLevelDesc();
+			int GetSurfaceLevel(uint level, out IntPtr surfacePointer);
+		}
+
+		/// <summary>
+		/// Import the IDirect3DDevice9 interface
+		/// </summary>
+		[ComImport, Guid("D0223B96-BF7A-43fd-92BD-A43B0D82B9EB"), InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
+		private interface IDirect3DDevice9
+		{
+			void TestCooperativeLevel();
+			void GetAvailableTextureMem();
+			void EvictManagedResources();
+			void GetDirect3D();
+			void GetDeviceCaps();
+			void GetDisplayMode();
+			void GetCreationParameters();
+			void SetCursorProperties();
+			void SetCursorPosition();
+			void ShowCursor();
+			void CreateAdditionalSwapChain();
+			void GetSwapChain();
+			void GetNumberOfSwapChains();
+			void Reset();
+			void Present();
+			int GetBackBuffer(uint swapChain, uint backBuffer, int type, out IntPtr backBufferPointer);
+		}
+		#endregion
+	}
+}

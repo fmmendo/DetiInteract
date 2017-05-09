@@ -1,0 +1,61 @@
+﻿<UserControl x:Class="DetiInteract.Guide.Controls.TeacherControl.TeacherItemView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="190" 
+			 d:DesignWidth="360">
+    <Grid Background="Gainsboro" 
+		  Width="340" 
+		  Height="170" 
+		  Margin="10">
+		<TextBlock Height="23" 
+				   Foreground="Black" 
+				   Padding="5"
+				   Text="{Binding Name}" 
+				   FontSize="12" 
+				   FontWeight="Bold" 
+				   FontFamily="../../Fonts/SegoeWP.ttf#Segoe WP"
+				   VerticalAlignment="Top" 
+				   HorizontalAlignment="Stretch">
+			<TextBlock.Background>
+				<LinearGradientBrush StartPoint="0,0" 
+									 EndPoint="0,1">
+					<GradientStop Offset="0.0" 
+								  Color="Gainsboro" />
+					<GradientStop Offset="1.0" 
+								  Color="DarkGray" />					
+				</LinearGradientBrush>
+			</TextBlock.Background>
+		</TextBlock>
+		<Image HorizontalAlignment="Left" 
+			   Margin="0,23,0,0" 
+			   Source="{Binding Photo}" 
+			   Stretch="Uniform" 
+			   VerticalAlignment="Top" 
+			   Width="120" 
+			   Height="147" />
+		<TextBlock Height="23" 
+				   HorizontalAlignment="Left" 
+				   Margin="130,29,0,0" 
+				   Text="{Binding Office}" 
+				   VerticalAlignment="Top" 
+				   FontSize="10" 
+				   FontFamily="../../Fonts/SegoeWP.ttf#Segoe WP" />
+		<TextBlock Height="23" 
+				   HorizontalAlignment="Left" 
+				   Margin="130,58,0,0" 
+				   Text="{Binding Extension}" 
+				   VerticalAlignment="Top" 
+				   FontSize="10" 
+				   FontFamily="../../Fonts/SegoeWP.ttf#Segoe WP" />
+		<TextBlock Height="23" 
+				   HorizontalAlignment="Left" 
+				   Margin="130,87,0,0" 
+				   Text="{Binding WebPage}" 
+				   VerticalAlignment="Top" 
+				   FontSize="10" 
+				   FontFamily="../../Fonts/SegoeWP.ttf#Segoe WP" />
+	</Grid>
+</UserControl>

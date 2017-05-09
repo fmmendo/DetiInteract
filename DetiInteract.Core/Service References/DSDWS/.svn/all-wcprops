@@ -1,0 +1,125 @@
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/detiinteract/!svn/ver/2/DetiInteract/DetiInteract.Core/Service%20References/DSDWS
+END
+DetiInteract.DSDBroker.DSDWS.Area.datasource
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/detiinteract/!svn/ver/2/DetiInteract/DetiInteract.Core/Service%20References/DSDWS/DetiInteract.DSDBroker.DSDWS.Area.datasource
+END
+DetiInteract.DSDBroker.DSDWS.TipoSala.datasource
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/detiinteract/!svn/ver/2/DetiInteract/DetiInteract.Core/Service%20References/DSDWS/DetiInteract.DSDBroker.DSDWS.TipoSala.datasource
+END
+DetiInteract.DSDBroker.DSDWS.DisciplinaAno.datasource
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/svn/detiinteract/!svn/ver/2/DetiInteract/DetiInteract.Core/Service%20References/DSDWS/DetiInteract.DSDBroker.DSDWS.DisciplinaAno.datasource
+END
+Reference.svcmap
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/detiinteract/!svn/ver/2/DetiInteract/DetiInteract.Core/Service%20References/DSDWS/Reference.svcmap
+END
+DetiInteract.DSDBroker.DSDWS.DocenteAno.datasource
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/svn/detiinteract/!svn/ver/2/DetiInteract/DetiInteract.Core/Service%20References/DSDWS/DetiInteract.DSDBroker.DSDWS.DocenteAno.datasource
+END
+DetiInteract.DSDBroker.DSDWS.Disciplina.datasource
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/svn/detiinteract/!svn/ver/2/DetiInteract/DetiInteract.Core/Service%20References/DSDWS/DetiInteract.DSDBroker.DSDWS.Disciplina.datasource
+END
+configuration91.svcinfo
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/detiinteract/!svn/ver/2/DetiInteract/DetiInteract.Core/Service%20References/DSDWS/configuration91.svcinfo
+END
+DetiInteract.DSDBroker.DSDWS.Sala.datasource
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/detiinteract/!svn/ver/2/DetiInteract/DetiInteract.Core/Service%20References/DSDWS/DetiInteract.DSDBroker.DSDWS.Sala.datasource
+END
+DetiInteract.DSDBroker.DSDWS.Docente.datasource
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/detiinteract/!svn/ver/2/DetiInteract/DetiInteract.Core/Service%20References/DSDWS/DetiInteract.DSDBroker.DSDWS.Docente.datasource
+END
+DetiInteract.DSDBroker.DSDWS.SubArea.datasource
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/detiinteract/!svn/ver/2/DetiInteract/DetiInteract.Core/Service%20References/DSDWS/DetiInteract.DSDBroker.DSDWS.SubArea.datasource
+END
+DetiInteract.DSDBroker.DSDWS.Aula.datasource
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/detiinteract/!svn/ver/2/DetiInteract/DetiInteract.Core/Service%20References/DSDWS/DetiInteract.DSDBroker.DSDWS.Aula.datasource
+END
+DetiInteract.DSDBroker.DSDWS.Departamento.datasource
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/svn/detiinteract/!svn/ver/2/DetiInteract/DetiInteract.Core/Service%20References/DSDWS/DetiInteract.DSDBroker.DSDWS.Departamento.datasource
+END
+DetiInteract.DSDBroker.DSDWS.Semestre.datasource
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/detiinteract/!svn/ver/2/DetiInteract/DetiInteract.Core/Service%20References/DSDWS/DetiInteract.DSDBroker.DSDWS.Semestre.datasource
+END
+DetiInteract.DSDBroker.DSDWS.Turma.datasource
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/detiinteract/!svn/ver/2/DetiInteract/DetiInteract.Core/Service%20References/DSDWS/DetiInteract.DSDBroker.DSDWS.Turma.datasource
+END
+WS.wsdl
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/detiinteract/!svn/ver/2/DetiInteract/DetiInteract.Core/Service%20References/DSDWS/WS.wsdl
+END
+Reference.cs
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/detiinteract/!svn/ver/2/DetiInteract/DetiInteract.Core/Service%20References/DSDWS/Reference.cs
+END
+DetiInteract.DSDBroker.DSDWS.Curso.datasource
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/detiinteract/!svn/ver/2/DetiInteract/DetiInteract.Core/Service%20References/DSDWS/DetiInteract.DSDBroker.DSDWS.Curso.datasource
+END
+DetiInteract.DSDBroker.DSDWS.TurmaHora.datasource
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn/detiinteract/!svn/ver/2/DetiInteract/DetiInteract.Core/Service%20References/DSDWS/DetiInteract.DSDBroker.DSDWS.TurmaHora.datasource
+END
+configuration.svcinfo
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/detiinteract/!svn/ver/2/DetiInteract/DetiInteract.Core/Service%20References/DSDWS/configuration.svcinfo
+END
+DetiInteract.DSDBroker.DSDWS.WishList.datasource
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/detiinteract/!svn/ver/2/DetiInteract/DetiInteract.Core/Service%20References/DSDWS/DetiInteract.DSDBroker.DSDWS.WishList.datasource
+END

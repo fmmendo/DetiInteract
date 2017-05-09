@@ -1,0 +1,104 @@
+﻿using System;
+using System.Windows;
+using System.Windows.Media.Imaging;
+using DetiInteract.DSDBroker.Parsers;
+
+namespace DetiInteract.Guide.Controls.TeacherControl.TeacherItemViewControl
+{
+	public sealed class TeacherItemViewModel : DependencyObject
+	{
+		#region Dependency Properties
+		/// <summary>
+		/// Name dependency property.
+		/// Stores a teacher's Name.
+		/// </summary>
+		public string Name
+		{
+			get { return (string)GetValue(NameProperty); }
+			set { SetValue(NameProperty, value); }
+		}
+
+		// Using a DependencyProperty as the backing store for Name.  This enables animation, styling, binding, etc...
+		public static readonly DependencyProperty NameProperty =
+			DependencyProperty.Register("Name", typeof(string), typeof(TeacherItemViewModel), new UIPropertyMetadata(""));
+
+		public BitmapImage Photo
+		{
+			get { return (BitmapImage)GetValue(PhitoProperty); }
+			set { SetValue(PhitoProperty, value); }
+		}
+
+		// Using a DependencyProperty as the backing store for Phito.  This enables animation, styling, binding, etc...
+		public static readonly DependencyProperty PhitoProperty =
+			DependencyProperty.Register("Phito", typeof(BitmapImage), typeof(TeacherItemViewModel), new UIPropertyMetadata(null));
+
+		/// <summary>
+		/// Office dependency property.
+		/// Stores a teacher's Office number.
+		/// </summary>
+		public string Office
+		{
+			get { return (string)GetValue(OfficeProperty); }
+			set { SetValue(OfficeProperty, value); }
+		}
+
+		// Using a DependencyProperty as the backing store for Office.  This enables animation, styling, binding, etc...
+		public static readonly DependencyProperty OfficeProperty =
+			DependencyProperty.Register("Office", typeof(string), typeof(TeacherItemViewModel), new UIPropertyMetadata(""));
+
+		/// <summary>
+		/// Extension dependency property.
+		/// Stores a teacher's Phone Extension.
+		/// </summary>
+		public string Extension
+		{
+			get { return (string)GetValue(ExtensionProperty); }
+			set { SetValue(ExtensionProperty, value); }
+		}
+
+		// Using a DependencyProperty as the backing store for Extension.  This enables animation, styling, binding, etc...
+		public static readonly DependencyProperty ExtensionProperty =
+			DependencyProperty.Register("Extension", typeof(string), typeof(TeacherItemViewModel), new UIPropertyMetadata(""));
+
+		/// <summary>
+		/// WebPage dependency property.
+		/// Stores a teacher's WebPage address.
+		/// </summary>
+		public String WebPage
+		{
+			get { return (String)GetValue(WebPageProperty); }
+			set { SetValue(WebPageProperty, value); }
+		}
+
+		// Using a DependencyProperty as the backing store for WebPage.  This enables animation, styling, binding, etc...
+		public static readonly DependencyProperty WebPageProperty =
+			DependencyProperty.Register("WebPage", typeof(String), typeof(TeacherItemViewModel), new UIPropertyMetadata(""));
+
+		#endregion
+
+		private TeacherItem _item;
+
+		/// <summary>
+		/// Constructor.
+		/// Takes the given TeacherItem instance and populates the Dependecy
+		/// Properties, updating the view.
+		/// </summary>
+		/// <param name="item"></param>
+		public TeacherItemViewModel(TeacherItem item)
+		{
+			_item = item;
+
+			this.Name = item.Name;
+
+			this.Photo = new BitmapImage();
+			this.Photo.BeginInit();
+			this.Photo.UriSource = new Uri(item.PhotoPath);
+			this.Photo.DecodePixelWidth = 120;
+			this.Photo.EndInit();
+
+			this.Office = "Gab: " + item.Office;
+			this.Extension = "Ext: " + item.PhoneExt;
+			this.WebPage = "Web: " + item.WebPage;
+		}
+	}
+}

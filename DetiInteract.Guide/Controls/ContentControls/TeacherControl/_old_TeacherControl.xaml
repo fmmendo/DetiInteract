@@ -1,0 +1,17 @@
+﻿<UserControl x:Class="DetiInteract.Guide.Controls.MyTeacherControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+			 xmlns:local="clr-namespace:DetiInteract.Guide.Controls"
+             mc:Ignorable="d">
+	<Grid>
+		<!--<ListBox ItemsSource="{Binding Teachers}" DataContext="{Binding Teachers}" Margin="25" Width="{Binding Width, RelativeSource={RelativeSource AncestorType={x:Type Grid}}}" Height="{Binding Width, RelativeSource={RelativeSource AncestorType={x:Type Grid}}}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+			<ListBox.ItemsPanel>
+				<ItemsPanelTemplate>
+					<WrapPanel Orientation="Horizontal" ItemHeight="170" ItemWidth="340"></WrapPanel>
+				</ItemsPanelTemplate>
+			</ListBox.ItemsPanel>
+		</ListBox>-->
+	</Grid>
+</UserControl>

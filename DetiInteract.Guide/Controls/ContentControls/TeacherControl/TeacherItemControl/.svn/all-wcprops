@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/detiinteract/!svn/ver/10/DetiInteract/DetiInteract.Guide/Controls/ContentControls/TeacherControl/TeacherItemControl
+END
+TeacherItemView.xaml
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/svn/detiinteract/!svn/ver/8/DetiInteract/DetiInteract.Guide/Controls/ContentControls/TeacherControl/TeacherItemControl/TeacherItemView.xaml
+END
+TeacherItemView.xaml.cs
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/svn/detiinteract/!svn/ver/21/DetiInteract/DetiInteract.Guide/Controls/ContentControls/TeacherControl/TeacherItemControl/TeacherItemView.xaml.cs
+END
+TeacherItemViewModel.cs
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/svn/detiinteract/!svn/ver/21/DetiInteract/DetiInteract.Guide/Controls/ContentControls/TeacherControl/TeacherItemControl/TeacherItemViewModel.cs
+END
